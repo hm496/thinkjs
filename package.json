@@ -1,11 +1,7 @@
 {
-  "name": "thinkjs",
+  "name": "thinkjs-ts",
   "description": "ThinkJS - Use full ES6/7 features to develop web applications",
-  "version": "3.2.8",
-  "author": {
-    "name": "welefen",
-    "email": "welefen@gmail.com"
-  },
+  "version": "0.2.8",
   "pre-commit": [
     "test"
   ],
@@ -15,28 +11,6 @@
     "lint": "eslint ./lib/ index.js",
     "prepublish": "npm test"
   },
-  "contributors": [
-    {
-      "name": "welefen",
-      "email": "welefen@gmail.com"
-    },
-    {
-      "name": "im-kulikov",
-      "email": "im@kulikov.im"
-    },
-    {
-      "name": "maxzhang",
-      "email": "zhangdaiping@gmail.com"
-    },
-    {
-      "name": "akira-cn",
-      "email": "akira.cn@gmail.com"
-    },
-    {
-      "name": "qgy18",
-      "email": "quguangyu@gmail.com"
-    }
-  ],
   "main": "lib/application.js",
   "type": "index.d.ts",
   "dependencies": {
@@ -90,7 +64,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/thinkjs/thinkjs"
+    "url": "https://github.com/hm496/thinkjs-ts"
   },
   "engines": {
     "node": ">=6.0.0"
@@ -98,6 +72,6 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "bugs": {
-    "url": "https://github.com/thinkjs/thinkjs/issues"
+    "url": "https://github.com/hm496/thinkjs-ts/issues"
   }
 }

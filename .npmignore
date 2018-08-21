@@ -5,3 +5,7 @@ test/
 ISSUE_TEMPLATE.md
 CODE_OF_CONDUCT.md
 appveyor.yml
+.idea
+.github
+.nyc_output
+.travis.yml

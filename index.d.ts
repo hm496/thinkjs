@@ -1,8 +1,7 @@
-
 import * as Koa from 'koa';
 import * as Helper from 'think-helper';
 import * as ThinkCluster from 'think-cluster';
-import { Think } from 'thinkjs';
+import {Think} from 'thinkjs';
 
 declare module 'thinkjs' {
 
@@ -28,30 +27,34 @@ declare module 'thinkjs' {
      * set cookie
      */
     cookie(name: string, value: string, options?: object): void;
+
     /**
      *
      *  delete cookie
      */
     cookie(name: string, value: null, options?: object): void;
   }
+
   interface ThinkConfig {
     /**
      * get config
      */
     config(name: string): any;
+
     /**
      * set config
      */
-    config(name: string, value: string): any;
+    config(name: string, value: any): any;
+
     /**
      * get or set config
      */
-    config(name: string, value?: string, module?: string): any;
+    config(name: string, value?: any, module?: string): any;
 
     /**
      * set config for all modules
      */
-    config(name: string, value: string, module: true): any;
+    config(name: string, value: any, module: true): any;
   }
 
   export interface Context extends Koa.Context, ThinkCookie, ThinkConfig {
@@ -80,25 +83,30 @@ declare module 'thinkjs' {
      * @memberOf Context
      */
     readonly isCli: boolean;
+
     /**
      * get referer header
      * @memberOf Context
      */
     referer(onlyHost: boolean): string;
+
     /**
      * get referer header
      * @memberOf Context
      */
     referrer(onlyHost: boolean): string;
+
     /**
      * @memberOf Context
      */
     isMethod(method: string): boolean;
+
     /**
      * is ajax request
      * @memberOf Context
      */
     isAjax(method: string): boolean;
+
     /**
      * is jsonp request
      *  callbackField default to this.config('jsonpCallbackField')
@@ -113,11 +121,13 @@ declare module 'thinkjs' {
      * @memberOf Context
      */
     jsonp(data: any, callbackField?: string): any;
+
     /**
      * send json data
      * @memberOf Context
      */
     json(data: any): any;
+
     /**
      * send success data
      * @memberOf Context
@@ -129,6 +139,7 @@ declare module 'thinkjs' {
      * @memberOf Context
      */
     fail(errno: any, errmsg?: object | string, data?: any): any;
+
     /**
      * set expires header
      * @memberOf Context
@@ -158,12 +169,14 @@ declare module 'thinkjs' {
      * @memberOf Context
      */
     param(value: object): this
+
     /**
      * get query data
      * `query` or `get` is already used in koa
      * @memberOf Context
      */
     param(name: string, value: any): this
+
     /**
      * get post data
      * @memberOf Context
@@ -264,10 +277,12 @@ declare module 'thinkjs' {
      * @memberOf Controller
      */
     readonly isCli: boolean;
+
     /**
      * @memberOf Controller
      */
     isMethod(method: string): boolean;
+
     /**
      * is ajax request
      * @memberOf Controller
@@ -281,6 +296,7 @@ declare module 'thinkjs' {
      * @memberOf Controller
      */
     isJsonp(callbackField?: string): boolean;
+
     /**
      * send jsonp data, callbackField default to this.config('jsonpCallbackField')
      *
@@ -305,6 +321,7 @@ declare module 'thinkjs' {
      * @memberOf Controller
      */
     fail(errno: any, errmsg?: string, data?: any): any;
+
     /**
      * set expires header
      * @memberOf Controller
@@ -317,6 +334,7 @@ declare module 'thinkjs' {
      * @memberOf Controller
      */
     get(name?: string, value?: any): any;
+
     /**
      * get or set param
      *
@@ -325,9 +343,9 @@ declare module 'thinkjs' {
     query(name?: string, value?: any): any;
 
     /**
-    * get post data
-    * @memberOf Controller
-    */
+     * get post data
+     * @memberOf Controller
+     */
     post(): object;
 
     /**
@@ -349,6 +367,7 @@ declare module 'thinkjs' {
      * @memberOf Controller
      */
     post(name: string, value: any): this;
+
     /**
      * get or set file data
      *
@@ -381,25 +400,27 @@ declare module 'thinkjs' {
      * @memberOf Controller
      */
     referer(onlyHost: boolean): string;
+
     /**
      * get referer header
      * @memberOf Controller
      */
     referrer(onlyHost: boolean): string;
+
     /**
-    * Perform a 302 redirect to `url`.
-    *
-    * The string "back" is special-cased
-    * to provide Referrer support, when Referrer
-    * is not present `alt` or "/" is used.
-    *
-    * Examples:
-    *
-    *    this.redirect('back');
-    *    this.redirect('back', '/index.html');
-    *    this.redirect('/login');
-    *    this.redirect('http://google.com');
-    */
+     * Perform a 302 redirect to `url`.
+     *
+     * The string "back" is special-cased
+     * to provide Referrer support, when Referrer
+     * is not present `alt` or "/" is used.
+     *
+     * Examples:
+     *
+     *    this.redirect('back');
+     *    this.redirect('back', '/index.html');
+     *    this.redirect('/login');
+     *    this.redirect('http://google.com');
+     */
     redirect(url: string, alt?: string): void;
 
     /**
@@ -407,6 +428,7 @@ declare module 'thinkjs' {
      * @memberOf Controller
      */
     controller(name: string, module?: string): this;
+
     /**
      *
      * set param
@@ -414,6 +436,7 @@ declare module 'thinkjs' {
      * @memberOf Controller
      */
     param(value: object): this
+
     /**
      * get query data
      * `query` or `get` is already used in koa
@@ -443,6 +466,7 @@ declare module 'thinkjs' {
      * @memberOf Controller
      */
     action(controllerName: string, actionsName: string, module?: string): Promise<any>;
+
     /**
      * download
      * @memberOf Controller
@@ -460,14 +484,19 @@ declare module 'thinkjs' {
 
   export interface Logger {
     debug(msg: string): void;
+
     info(msg: string): void;
+
     warn(msg: string): void;
+
     error(msg: string): void;
   }
 
   export interface Logic extends Controller {
     new(): Logic;
+
     validate(rules: Object, msgs?: Object): Object;
+
     validateErrors?: Object;
     allowMethods: string;
   }
@@ -490,8 +519,11 @@ declare module 'thinkjs' {
     Service: Service;
 
     service(name: string): any;
+
     service(name: string, ...args: any[]): any;
+
     service(name: string, m: any, ...args: any[]): any;
+
     beforeStartServer(fn: Function): Promise<any>;
   }
 }
